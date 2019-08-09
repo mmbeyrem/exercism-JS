@@ -1,23 +1,41 @@
 'use strict'
 
 export class Clock {
-  constructor() {
-    throw new Error('Remove this statement and implement this function');
+  constructor(hours, minutes=0) {
+    this.reformatTime(hours,minutes);  
+  }
+
+  reformatTime(hours,minutes) {
+    this.minutes = minutes % 60;
+    const extraHours = Math.floor(minutes / 60);
+    this.hours = (hours + extraHours) % 24;
+    if (this.hours < 0)
+      this.hours += 24;
+    if (this.minutes < 0)
+      this.minutes += 60;
   }
 
   toString() {
-    throw new Error('Remove this statement and implement this function');
+    var h = this.format(this.hours);
+    var m = this.format(this.minutes);
+    return `${h}:${m}`; 
   }
 
-  plus() {
-    throw new Error('Remove this statement and implement this function');
+  format(x) {
+    return (x < 10) ? `0${x}` : `${x}`;
   }
 
-  minus() {
-    throw new Error('Remove this statement and implement this function');
+  plus(m) {
+    this.reformatTime(this.hours,this.minutes + m );
+    return this;
   }
 
-  equals() {
-    throw new Error('Remove this statement and implement this function');
+  minus(m) {
+    this.reformatTime(this.hours,this.minutes - m );
+    return this;
+  }
+
+  equals(c) {
+    return this.minutes == c.minutes && this.hours == c.hours
   }
 }
