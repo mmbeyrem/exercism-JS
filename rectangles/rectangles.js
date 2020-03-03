@@ -1,10 +1,19 @@
-//
-// This is only a SKELETON file for the 'Rectangles' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
 
 export class Rectangles {
-  static count() {
-    throw new Error("Remove this statement and implement this function");
+  static count(blueprint) {
+    if (blueprint.length <= 1)
+      return 0;
+    let lines = [];
+    for (let i = 0; i < blueprint.length; i++) {
+      lines.push(Array.from(blueprint[i]));
+    }
+    for (let i = 0; i < lines.length; i++) {
+      for (let j = 0; j < lines[0].length; j++) {
+        lines[i] == lines[j]
+      }
+
+    }
   }
 }
+
+
